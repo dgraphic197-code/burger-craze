@@ -3,435 +3,53 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#11100f">
-<title>Burger Craze — Big Bites. Bold Flavour.</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-<style>
-:root{
-  --bg:#11100f;
-  --card:#1d1a18;
-  --orange:#ff6b2c;
-  --cream:#fff1df;
-  --muted:#b9aea4;
-  --line:#ffffff18;
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:90px}
-body{
-  margin:0;background:var(--bg);color:var(--cream);
-  font-family:"DM Sans",sans-serif;
-}
-a{text-decoration:none;color:inherit}
-button{font:inherit;cursor:pointer}
-.wrap{width:min(1160px,calc(100% - 36px));margin:auto}
-.topbar{
-  background:var(--orange);color:#241209;text-align:center;
-  padding:9px;font-size:12px;font-weight:800;letter-spacing:1.5px;
-}
-header{
-  position:sticky;top:0;z-index:10;background:#11100feF;
-  backdrop-filter:blur(15px);border-bottom:1px solid var(--line);
-}
-.nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px}
-.logo{font:700 22px "Space Grotesk";letter-spacing:-1px}
-.logo b{color:var(--orange)}
-.logo-icon{display:inline-grid;place-items:center;background:var(--orange);color:#201009;border-radius:11px;width:38px;height:38px;margin-right:7px}
-.links{display:flex;align-items:center;gap:26px;font-size:14px;color:#ddd0c4}
-.links a:hover{color:var(--orange)}
-.nav-right{display:flex;align-items:center;gap:12px}
-.cart{
-  padding:10px 13px;border:1px solid var(--line);border-radius:30px;
-  font-size:13px;
-}
-.count{background:var(--orange);color:#1c1009;padding:3px 7px;border-radius:50%;font-weight:800}
-.btn{
-  display:inline-flex;align-items:center;justify-content:center;gap:9px;
-  background:var(--orange);color:#241208;padding:14px 20px;
-  border-radius:30px;font-weight:800;border:0;transition:.25s;
-}
-.btn:hover{background:#ff9256;transform:translateY(-3px)}
-.outline{background:transparent;color:var(--cream);border:1px solid var(--line)}
-.outline:hover{background:var(--card)}
-.toggle{display:none;background:none;color:white;border:1px solid var(--line);border-radius:10px;padding:9px}
-
-.hero{padding:65px 0 75px;overflow:hidden}
-.hero-grid{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:35px}
-.label{color:var(--orange);font-size:12px;letter-spacing:3px;font-weight:800;text-transform:uppercase}
-h1,h2,h3{font-family:"Space Grotesk",sans-serif}
-h1{font-size:clamp(58px,7vw,100px);letter-spacing:-7px;line-height:.9;margin:22px 0}
-h1 span{display:block;color:var(--orange)}
-.hero p{max-width:470px;color:var(--muted);font-size:16px;line-height:1.8}
-.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:25px}
-.proof{display:flex;align-items:center;gap:13px;margin-top:30px;color:var(--muted);font-size:12px}
-.proof strong{color:var(--cream);font-size:14px}
-.hero-art{position:relative;display:grid;place-items:center;min-height:450px}
-.glow{position:absolute;width:90%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,#ff6b2c40,transparent 70%)}
-.hero-img{
-  position:relative;width:100%;height:440px;object-fit:cover;
-  border-radius:45% 45% 25px 25px;
-  animation:float 5s ease-in-out infinite;
-}
-.floating{
-  position:absolute;z-index:2;background:#211c18ed;border:1px solid #ffffff20;
-  padding:13px 17px;border-radius:15px;box-shadow:0 15px 35px #0006;
-  animation:float 4s ease-in-out infinite;
-}
-.floating small{display:block;color:var(--muted);font-size:10px}
-.floating strong{font-size:14px}
-.f1{left:-10px;top:65px}
-.f2{right:-5px;bottom:60px;animation-delay:-2s}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
-
-.ticker{overflow:hidden;border-block:1px solid var(--line);background:#171513}
-.ticker-track{display:flex;gap:28px;width:max-content;padding:17px 0;animation:marquee 24s linear infinite;font-weight:800;letter-spacing:2px;font-size:12px}
-.ticker-track span:nth-child(even){color:var(--orange)}
-@keyframes marquee{to{transform:translateX(-50%)}}
-
-section{padding:85px 0}
-.featured,.reviews{background:#151311}
-.section-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:30px}
-h2{font-size:clamp(38px,5vw,62px);line-height:.98;letter-spacing:-3px;margin:13px 0}
-.section-head p{max-width:370px;color:var(--muted);font-size:14px;line-height:1.8}
-.products{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.product{overflow:hidden;background:var(--card);border:1px solid var(--line);border-radius:20px;transition:.3s}
-.product:hover{transform:translateY(-7px);border-color:#ff6b2c88}
-.product-img{height:235px;position:relative;overflow:hidden}
-.product-img img{width:100%;height:100%;object-fit:cover;transition:.5s}
-.product:hover .product-img img{transform:scale(1.06)}
-.tag{position:absolute;top:14px;left:14px;background:var(--orange);color:#241209;border-radius:30px;padding:7px 11px;font-size:10px;font-weight:900;text-transform:uppercase}
-.product-body{padding:20px}
-.product-row{display:flex;justify-content:space-between;gap:10px;align-items:center}
-.product h3{font-size:20px;margin:0}
-.price{color:var(--orange);font-weight:800;white-space:nowrap}
-.product p{font-size:13px;color:var(--muted);line-height:1.7;min-height:44px}
-.product-bottom{display:flex;align-items:center;justify-content:space-between}
-.stars{color:#ffba58;font-size:12px}
-.add{
-  width:43px;height:43px;border:0;border-radius:12px;
-  background:var(--orange);color:#241209;font-size:24px;font-weight:800;transition:.2s;
-}
-.add:hover{transform:rotate(90deg);background:#ff9256}
-
-.promo{padding:0 0 85px}
-.promo-box{display:grid;grid-template-columns:1fr 1fr;background:var(--orange);color:#251108;border-radius:25px;overflow:hidden}
-.promo-copy{padding:40px}
-.promo h2{font-size:clamp(40px,5vw,65px)}
-.promo p{line-height:1.8;max-width:390px}
-.promo .btn{background:#211009;color:var(--cream)}
-.promo-img{min-height:300px;background:url("https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1000&q=85") center/cover}
-
-.perks{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.perk{padding:27px;background:var(--card);border:1px solid var(--line);border-radius:18px}
-.perk-icon{font-size:30px}
-.perk h3{font-size:20px}
-.perk p{font-size:13px;line-height:1.8;color:var(--muted)}
-
-.review-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
-.review{padding:25px;background:var(--card);border:1px solid var(--line);border-radius:18px}
-.review blockquote{padding:0;margin:17px 0 25px;font:600 18px/1.5 "Space Grotesk"}
-.reviewer{font-size:12px;color:var(--muted)}
-.cta{text-align:center;padding:90px 0}
-.cta h2{font-size:clamp(45px,7vw,82px)}
-.cta h2 span{color:var(--orange)}
-.cta p{color:var(--muted);max-width:520px;margin:20px auto 28px;line-height:1.8}
-
-footer{background:#0b0a09;border-top:1px solid var(--line);padding:45px 0 22px}
-.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:25px;padding-bottom:30px}
-footer p,footer a{color:var(--muted);font-size:13px;line-height:1.8}
-footer h4{font-size:12px;letter-spacing:1px;text-transform:uppercase}
-footer a{display:block;margin:7px 0}
-footer a:hover{color:var(--orange)}
-.footer-bottom{border-top:1px solid var(--line);padding-top:18px;color:#92877e;font-size:11px;display:flex;justify-content:space-between;gap:15px}
-.toast{position:fixed;bottom:22px;left:50%;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:var(--cream);color:#211009;padding:13px 18px;border-radius:12px;font-weight:800;z-index:50;transition:.25s;white-space:nowrap}
-.toast.show{opacity:1;transform:translate(-50%,0)}
-.reveal{opacity:0;transform:translateY(20px);transition:.7s}
-.reveal.visible{opacity:1;transform:translateY(0)}
-@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
-@media(max-width:850px){
-  .links{gap:13px}.hero-grid{gap:15px}
-  h1{font-size:65px;letter-spacing:-4px}.hero-img{height:350px}
-  .products{grid-template-columns:repeat(2,1fr)}
-  .product:last-child{grid-column:1/-1}
-  .footer-grid{grid-template-columns:repeat(2,1fr)}
-}
-@media(max-width:650px){
-  .wrap{width:calc(100% - 30px)}
-  .nav{height:68px}.toggle{display:block}
-  .links{display:none;position:absolute;top:68px;left:0;right:0;background:#171513;padding:15px 22px;flex-direction:column;align-items:stretch;gap:0}
-  .links.open{display:flex}.links a{padding:12px 0;border-bottom:1px solid var(--line)}
-  .nav-right>.btn{display:none}
-  .hero{padding:42px 0 50px}
-  .hero-grid{grid-template-columns:1fr}
-  h1{font-size:clamp(57px,15vw,83px);letter-spacing:-5px}
-  .hero-art{min-height:330px;margin-top:10px}
-  .hero-img{height:330px;width:100%}
-  .f1{left:0;top:25px}.f2{right:0;bottom:30px}
-  section{padding:65px 0}
-  .section-head{align-items:start;flex-direction:column}
-  h2{font-size:43px}
-  .products,.perks,.review-grid{grid-template-columns:1fr}
-  .product:last-child{grid-column:auto}
-  .product-img{height:240px}
-  .promo{padding-bottom:65px}
-  .promo-box{grid-template-columns:1fr}
-  .promo-copy{padding:28px 23px}
-  .promo-img{min-height:220px}
-  .footer-grid{grid-template-columns:1fr 1fr;gap:20px}
-  .footer-grid>div:first-child{grid-column:1/-1}
-  .footer-bottom{flex-direction:column}
-}
-</style>
+<meta name="theme-color" content="#fff4e7">
+<title>Burger Craze — Big Burgers. Fast Delivery.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-<div class="topbar">🔥 FRESH OFF THE GRILL · BIG FLAVOUR, ZERO BORING BITES</div>
-
-<header>
-  <div class="wrap nav">
-    <a href="index.html" class="logo"><span class="logo-icon">🍔</span>BURGER <b>CRAZE</b></a>
-    <nav class="links" id="navLinks" aria-label="Main navigation">
-      <a href="index.html">Home</a>
-      <a href="menu.html">Our Menu</a>
-      <a href="#story">Why Craze?</a>
-      <a href="#reviews">Reviews</a>
-      <a href="#contact">Contact</a>
-    </nav>
-    <div class="nav-right">
-      <a class="cart" href="cart.html" aria-label="Open cart">🛒 Cart <span class="count" data-cart-count>0</span></a>
-      <a class="btn" href="menu.html">Order Now ↗</a>
-      <button class="toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
-    </div>
-  </div>
+<div class="announcement"><span class="pulse-dot"></span> HOT, FRESH & FAST — FREE DELIVERY ON ORDERS OVER ₹499</div>
+<header class="site-header">
+  <a class="brand" href="index.html"><span class="brand-mark">BC</span><span>BURGER <b>CRAZE</b><small>STACKED WITH ATTITUDE</small></span></a>
+  <nav><a class="active" href="index.html">Home</a><a href="menu.html">Menu</a><a href="#story">Our Story</a></nav>
+  <div class="header-actions"><a class="whatsapp-link" href="#" data-whatsapp>WhatsApp</a><a class="cart-link" href="cart.html">Cart <span class="cart-count">0</span></a><button class="menu-toggle" aria-label="Open menu">☰</button></div>
 </header>
-
 <main>
-  <section class="hero">
-    <div class="wrap hero-grid">
-      <div class="hero-copy">
-        <span class="label">Not your average burger</span>
-        <h1>BIG BITES.<span>BOLD FLAVOUR.</span></h1>
-        <p>Messy hands. Happy heart. Meet your next obsession — juicy burgers, crispy edges and flavour that hits different.</p>
-        <div class="actions">
-          <a class="btn" href="menu.html">Explore the Menu →</a>
-          <a class="btn outline" href="#story">Our Secret Sauce</a>
-        </div>
-        <div class="proof"><span style="font-size:25px">🤤 🔥 🍔</span><div><strong>Made for serious cravings</strong><br>Freshly prepared. Boldly flavoured.</div></div>
-      </div>
-      <div class="hero-art">
-        <div class="glow"></div>
-        <img class="hero-img" src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1100&q=90" alt="Juicy cheeseburger with fresh lettuce and tomato" fetchpriority="high">
-        <div class="floating f1"><small>THE FAN FAVOURITE</small><strong>🔥 Craze Classic</strong></div>
-        <div class="floating f2"><strong>⭐ Big flavour</strong><small>One bite says it all</small></div>
-      </div>
-    </div>
-  </section>
-
-  <div class="ticker"><div class="ticker-track">
-    <span>FRESH INGREDIENTS</span><span>✳</span><span>BIG FLAVOUR</span><span>✳</span><span>MADE TO ORDER</span><span>✳</span><span>ZERO BORING BITES</span><span>✳</span>
-    <span>FRESH INGREDIENTS</span><span>✳</span><span>BIG FLAVOUR</span><span>✳</span><span>MADE TO ORDER</span><span>✳</span><span>ZERO BORING BITES</span><span>✳</span>
-  </div></div>
-
-  <section class="featured" id="menu">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <div><span class="label">The crowd pleasers</span><h2>MEET THE<br>CRAVINGS.</h2></div>
-        <p>Stacked tall, grilled fresh and built to make your taste buds do a happy dance.</p>
-        <a class="btn outline" href="menu.html">Full Menu ↗</a>
-      </div>
-      <div class="products">
-        <article class="product reveal">
-          <div class="product-img"><img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=800&q=85" alt="Craze Classic cheeseburger" loading="lazy"><span class="tag">Bestseller</span></div>
-          <div class="product-body">
-            <div class="product-row"><h3>Craze Classic</h3><span class="price">₹199</span></div>
-            <p>Smash-grilled patty, melty cheese, crisp lettuce and signature sauce.</p>
-            <div class="product-bottom"><span class="stars">★★★★★</span><button class="add" aria-label="Add Craze Classic to cart" data-add-to-cart data-id="craze-classic" data-name="Craze Classic" data-price="199" data-image="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=500&q=80">+</button></div>
-          </div>
-        </article>
-        <article class="product reveal">
-          <div class="product-img"><img src="https://images.unsplash.com/photo-1553979459-d2229ba7433a?auto=format&fit=crop&w=800&q=85" alt="Spicy crispy chicken burger" loading="lazy"><span class="tag">Hot Pick 🌶</span></div>
-          <div class="product-body">
-            <div class="product-row"><h3>Firecracker</h3><span class="price">₹229</span></div>
-            <p>Crispy chicken, fiery chilli mayo, crunchy slaw and toasted bun.</p>
-            <div class="product-bottom"><span class="stars">★★★★★</span><button class="add" aria-label="Add Firecracker to cart" data-add-to-cart data-id="firecracker" data-name="Firecracker" data-price="229" data-image="https://images.unsplash.com/photo-1553979459-d2229ba7433a?auto=format&fit=crop&w=500&q=80">+</button></div>
-          </div>
-        </article>
-        ```html
-<article class="product reveal">
-  <div class="product-img">
-    <img
-      src="https://images.unsplash.com/photo-1520072959219-c595dc870360?auto=format&fit=crop&w=800&q=85"
-      alt="Double cheeseburger"
-      loading="lazy"
-    >
-    <span class="tag">Big Energy</span>
+<section class="hero">
+  <div class="hero-copy">
+    <div class="eyebrow"><span>✦</span> THE CITY'S NEW CRAVING</div>
+    <h1>GOOD FOOD.<br><em>BAD</em> INFLUENCE.</h1>
+    <p class="hero-lede">Ridiculously juicy burgers, golden-crunch fries and shakes that don't know when to stop.</p>
+    <div class="hero-buttons"><a class="btn btn-dark" href="menu.html">Explore the menu <span>↗</span></a><a class="text-link" href="#signature">Meet the legends <span>↓</span></a></div>
+    <div class="hero-proof"><div class="avatars"><span>🍔</span><span>🍟</span><span>🥤</span></div><div><strong>4.9/5 CRAVE RATING</strong><small>Made fresh. Loved loudly.</small></div><div class="proof-divider"></div><div><strong>25–35 MIN</strong><small>Estimated delivery</small></div></div>
   </div>
-
-  <div class="product-body">
-    <div class="product-row">
-      <h3>Double Trouble</h3>
-      <span class="price">₹279</span>
-    </div>
-
-    <p>Two juicy patties, double cheese, grilled onions and house sauce.</p>
-
-    <div class="product-bottom">
-      <span class="stars">★★★★★</span>
-
-      <button
-        class="add"
-        aria-label="Add Double Trouble to cart"
-        data-add-to-cart
-        data-id="double-trouble"
-        data-name="Double Trouble"
-        data-price="279"
-        data-image="https://images.unsplash.com/photo-1520072959219-c595dc870360?auto=format&fit=crop&w=500&q=80"
-      >+</button>
-    </div>
+  <div class="hero-visual">
+    <div class="burst">100%<br><b>CRAVE</b><br>WORTHY</div>
+    <div class="hero-photo"><img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1100&q=90" alt="Juicy double cheeseburger"></div>
+    <div class="floating-card float-card-top"><span class="mini-icon">🔥</span><div><b>Fresh off the grill</b><small>Every. Single. Time.</small></div></div>
+    <div class="floating-card float-card-bottom"><span class="delivery-icon">🛵</span><div><b>Craze Express</b><small>Fast delivery mode: ON</small></div><span class="speed-lines">〰</span></div>
+    <div class="scribble">one bite<br>and you're in.</div>
   </div>
-</article>
-```
-      </div>
-    </div>
-  </section>
-
-  <div class="promo">
-    <div class="wrap"><div class="promo-box reveal">
-      <div class="promo-copy"><span class="label" style="color:#35180b">Your new happy place</span><h2>GOOD FOOD.<br>GREAT MOOD.</h2><p>Bring the crew. Bring the appetite. We'll bring the burgers that make the moment.</p><a class="btn" href="menu.html">Find Your Favourite ↗</a></div>
-      <div class="promo-img" role="img" aria-label="Freshly prepared burger"></div>
-    </div></div>
+  <div class="ticker"><div class="ticker-track"><span>BIG FLAVOUR</span><i>✳</i><span>NO BORING BITES</span><i>✳</i><span>SAUCE IT UP</span><i>✳</i><span>BIG FLAVOUR</span><i>✳</i><span>NO BORING BITES</span><i>✳</i><span>SAUCE IT UP</span><i>✳</i></div></div>
+</section>
+<section class="signature section-pad" id="signature">
+  <div class="section-heading"><div><div class="eyebrow">THE CROWD FAVOURITES</div><h2>THE <em>CRAZE</em> LIST.</h2></div><a class="text-link" href="menu.html">View full menu ↗</a></div>
+  <div class="food-grid">
+    <article class="food-card"><div class="food-img"><span class="food-tag">BESTSELLER</span><img src="https://images.unsplash.com/photo-1553979459-d2229ba7433a?auto=format&fit=crop&w=900&q=85" alt="Classic cheeseburger"><button class="quick-add" data-add="Classic Crazer" data-price="249">+ Add</button></div><div class="food-meta"><div><h3>Classic Crazer</h3><p>Double cheese · House sauce</p></div><b>₹249</b></div></article>
+    <article class="food-card"><div class="food-img"><span class="food-tag tag-orange">SPICY PICK</span><img src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=900&q=85" alt="Spicy burger"><button class="quick-add" data-add="Firecracker Chicken" data-price="299">+ Add</button></div><div class="food-meta"><div><h3>Firecracker Chicken</h3><p>Smoky heat · Crunchy slaw</p></div><b>₹299</b></div></article>
+    <article class="food-card"><div class="food-img"><span class="food-tag tag-green">VEGGIE HERO</span><img src="https://images.unsplash.com/photo-1520072959219-c595dc870360?auto=format&fit=crop&w=900&q=85" alt="Veggie burger"><button class="quick-add" data-add="Garden Party" data-price="229">+ Add</button></div><div class="food-meta"><div><h3>Garden Party</h3><p>Crispy veg patty · Tangy mayo</p></div><b>₹229</b></div></article>
   </div>
-
-  <section id="story">
-    <div class="wrap">
-      <div class="section-head reveal"><div><span class="label">Why we're different</span><h2>MADE WITH<br>THE GOOD STUFF.</h2></div><p>No shortcuts. No sad burgers. Just the little details that turn a good bite into a great one.</p></div>
-      <div class="perks">
-        <article class="perk reveal"><div class="perk-icon">🍳</div><h3>Fresh off the grill</h3><p>Every burger is made to order, hot, juicy and ready for that first legendary bite.</p></article>
-        <article class="perk reveal"><div class="perk-icon">🥬</div><h3>Good ingredients only</h3><p>Fresh crunch, melty cheese and flavour-packed sauces in every stack.</p></article>
-        <article class="perk reveal"><div class="perk-icon">🧡</div><h3>Big flavour, always</h3><p>Generous portions, bold combinations and zero boring bites. That's the Craze promise.</p></article>
-      </div>
-    </div>
-  </section>
-
-  <section class="reviews" id="reviews">
-    <div class="wrap">
-      <div class="section-head reveal"><div><span class="label">Don't just take our word</span><h2>CRAVING-APPROVED.</h2></div><p>Good burgers make memories. Here's the vibe we're aiming for.</p></div>
-      <div class="review-grid">
-        <article class="review reveal"><div class="stars">★★★★★</div><blockquote>“That first bite? Absolutely unreal. The sauce deserves its own fan club.”</blockquote><div class="reviewer">HAPPY CUSTOMER</div></article>
-        <article class="review reveal"><div class="stars">★★★★★</div><blockquote>“The burger was juicy, the fries were crispy. Already planning my next order.”</blockquote><div class="reviewer">FOOD LOVER</div></article>
-        <article class="review reveal"><div class="stars">★★★★★</div><blockquote>“Finally, a burger that looks as good as it tastes. Double Trouble is a must.”</blockquote><div class="reviewer">BURGER FAN</div></article>
-      </div>
-    </div>
-  </section>
-
-  <section class="cta" id="contact">
-    <div class="wrap reveal"><span class="label">Your stomach called</span><h2>LET'S MAKE<br><span>A BURGER DAY.</span></h2><p>Your next favourite bite is only a few clicks away. Browse the menu, fill your cart and get your order started.</p><a class="btn" href="menu.html">Order Your Burger ↗</a></div>
-  </section>
+</section>
+<section class="delivery-band">
+  <div class="delivery-copy"><div class="eyebrow">YOUR CRAVINGS DON'T WAIT</div><h2>FAST FOOD.<br><em>FASTER FEET.</em></h2><p>From our hot grill to your front door. Track the Craze Express rider as your order races across town.</p><a href="menu.html" class="btn btn-light">Order something good <span>↗</span></a></div>
+  <div class="delivery-scene"><div class="road"><span class="road-dash"></span></div><div class="delivery-glow"></div><div class="delivery-rider"><div class="rider-helmet">●</div><div class="rider-head">☺</div><div class="rider-body">BC</div><div class="rider-arm"></div><div class="rider-box">BC<br><small>HOT!</small></div><div class="wheel wheel-one"></div><div class="wheel wheel-two"></div><div class="bike-frame"></div></div><div class="speed speed-one"></div><div class="speed speed-two"></div><div class="delivery-label">CRAze EXPRESS <span>→</span></div><div class="eta-pill">⚡ 25–35 MIN</div></div>
+</section>
+<section class="promise section-pad" id="story"><div class="promise-intro"><div class="eyebrow">NOT JUST ANOTHER BURGER JOINT</div><h2>MADE WITH<br><em>MAIN-CHARACTER</em><br>ENERGY.</h2></div><div class="promise-items"><div><span>01</span><h3>Fresh, never boring.</h3><p>Real ingredients, proper seasoning and patties cooked when you order.</p></div><div><span>02</span><h3>Sauce is a love language.</h3><p>Our signature sauces bring the messy, moreish, one-more-bite magic.</p></div><div><span>03</span><h3>Fast, not careless.</h3><p>Carefully packed and sent out hot, so your first bite hits just right.</p></div></div></section>
+<section class="cta-strip"><div><span>HUNGRY YET?</span><h2>LET'S GET <em>MESSY.</em></h2></div><a class="btn btn-dark" href="menu.html">Order now <span>↗</span></a></section>
 </main>
-
-<footer>
-  <div class="wrap">
-    <div class="footer-grid">
-      <div><a href="index.html" class="logo"><span class="logo-icon">🍔</span>BURGER <b>CRAZE</b></a><p>Big bites. Bold flavour. Good vibes. Your destination for seriously satisfying burgers.</p></div>
-      <div><h4>Explore</h4><a href="index.html">Home</a><a href="menu.html">Our Menu</a><a href="cart.html">Your Cart</a><a href="#story">Our Story</a></div>
-      <div><h4>Find Us</h4><p>Replace with your restaurant address</p><p>Add your opening hours</p></div>
-      <div><h4>Say Hello</h4><p>Replace with your phone number</p><p>Replace with your email</p></div>
-    </div>
-    <div class="footer-bottom"><span>© <span id="year"></span> Burger Craze. All bites reserved.</span><span>Made for hungry people, with 🧡</span></div>
-  </div>
-</footer>
-
-<div class="toast" id="toast" role="status" aria-live="polite">Added to cart!</div>
-
-<script>
-/*
-  CART INTEGRATION
-  Shared localStorage key: burgerCrazeCart
-  Shared item format: {id, name, price, image, qty}
-  Use this same key and item format in menu.html and cart.html.
-*/
-const CART_KEY = "burgerCrazeCart";
-
-function getCart(){
-  try{
-    const cart = JSON.parse(localStorage.getItem(CART_KEY) || "[]");
-    return Array.isArray(cart) ? cart : [];
-  }catch(error){ return []; }
-}
-
-function saveCart(cart){
-  localStorage.setItem(CART_KEY, JSON.stringify(cart));
-  updateCartCount();
-}
-
-function updateCartCount(){
-  const total = getCart().reduce((sum,item)=>sum + Math.max(0,Number(item.qty)||0),0);
-  document.querySelectorAll("[data-cart-count]").forEach(el=>el.textContent=total);
-}
-
-function addToCart(product){
-  const cart = getCart();
-  const existing = cart.find(item=>item.id===product.id);
-
-  if(existing){
-    existing.qty = (Number(existing.qty)||0)+1;
-  }else{
-    cart.push({...product,qty:1});
-  }
-
-  saveCart(cart);
-
-  const toast = document.getElementById("toast");
-  toast.textContent = product.name + " added to your cart!";
-  toast.classList.add("show");
-  clearTimeout(window.crazeToastTimer);
-  window.crazeToastTimer = setTimeout(()=>toast.classList.remove("show"),2200);
-}
-
-document.querySelectorAll("[data-add-to-cart]").forEach(button=>{
-  button.addEventListener("click",()=>{
-    addToCart({
-      id:button.dataset.id,
-      name:button.dataset.name,
-      price:Number(button.dataset.price),
-      image:button.dataset.image || ""
-    });
-  });
-});
-
-const toggle = document.getElementById("menuToggle");
-const navLinks = document.getElementById("navLinks");
-
-toggle.addEventListener("click",()=>{
-  const open = navLinks.classList.toggle("open");
-  toggle.setAttribute("aria-expanded",String(open));
-  toggle.textContent = open ? "✕" : "☰";
-});
-
-navLinks.querySelectorAll("a").forEach(link=>{
-  link.addEventListener("click",()=>{
-    navLinks.classList.remove("open");
-    toggle.setAttribute("aria-expanded","false");
-    toggle.textContent="☰";
-  });
-});
-
-document.getElementById("year").textContent = new Date().getFullYear();
-updateCartCount();
-
-try{
-  const observer = new IntersectionObserver(entries=>{
-    entries.forEach(entry=>{
-      if(entry.isIntersecting){
-        entry.target.classList.add("visible");
-        observer.unobserve(entry.target);
-      }
-    });
-  },{threshold:0.12});
-  document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
-}catch(error){
-  document.querySelectorAll(".reveal").forEach(el=>el.classList.add("visible"));
-}
-</script>
-</body>
-</html>
+<footer><a class="brand" href="index.html"><span class="brand-mark">BC</span><span>BURGER <b>CRAZE</b><small>STACKED WITH ATTITUDE</small></span></a><p>Big burgers. Bigger moods.</p><div class="footer-links"><a href="menu.html">Menu</a><a href="cart.html">Cart</a><a href="#" data-whatsapp>WhatsApp us</a></div><small>© 2026 Burger Craze. All bites reserved.</small></footer>
+<a class="floating-whatsapp" href="#" data-whatsapp aria-label="Chat on WhatsApp">☏<span>Order on WhatsApp</span></a>
+<script src="script.js"></script>
+</body></html>
